@@ -1,8 +1,9 @@
-Options -Indexes
-RewriteEngine On
-RewriteBase /
+RewriteEngine On 
 
-# Allow PHP files everywhere
-<FilesMatch "\.php$">
-    SetHandler application/x-httpd-php
-</FilesMatch>
+# Handle routes like /pages/dashboard.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)$ $1 [L,QSA]
+
+# Default route to index.php
+DirectoryIndex index.php
