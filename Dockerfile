@@ -7,8 +7,8 @@ RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 RUN a2enmod rewrite
 RUN a2enmod headers
 
-# Allow .htaccess overrides (proper multiline!)
-RUN bash -c 'cat > /etc/apache2/conf-available/allowoverride.conf <<EOF
+# Add allowoverride config (correct quoting!)
+RUN bash -c 'cat <<EOF > /etc/apache2/conf-available/allowoverride.conf
 <Directory /var/www/html/>
     AllowOverride All
     Require all granted
@@ -17,7 +17,7 @@ EOF'
 
 RUN a2enconf allowoverride
 
-# Copy project files
+# Copy project
 COPY . /var/www/html/
 
 # Fix permissions
