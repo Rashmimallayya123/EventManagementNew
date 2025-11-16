@@ -1,11 +1,11 @@
 <?php
-$host = "crossover.proxy.rlwy.net";
-$port = 20185;
-$username = "root";
-$password = "zZqBbAojKqrZwtzoAHcgIuSvfaPcijOI";
-$database = "railway";
+$host = "trolley.proxy.rlwy.net";
+$user = "root";
+$pass = "ZNWGAyoXgMrKcirDdZxEvSuYOQWtbtIe";
+$db   = "railway";
+$port = 43547;
 
-$conn = mysqli_connect($host, $username, $password, $database, $port);
+$conn = mysqli_connect($host, $user, $pass, $db, $port);
 
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
