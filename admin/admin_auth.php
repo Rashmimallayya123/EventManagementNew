@@ -7,7 +7,6 @@ if (isset($_POST['admin_login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Correct SQL (matches your DB)
     $sql = "SELECT * FROM admin_users WHERE username='$username' AND password='$password'";
     $result = mysqli_query($conn, $sql);
 
