@@ -80,12 +80,18 @@ $events = mysqli_query($conn, "SELECT title FROM create_event ORDER BY title ASC
             <input type="email" name="user_email" value="<?php echo $user_email; ?>" class="form-control" readonly>
 
             <label class="mt-3">Select Event</label>
-            <select name="event_name" class="form-control" required>
-                <option value="" disabled selected>Select Event</option>
-                <?php while ($e = mysqli_fetch_assoc($events)) { ?>
-                    <option value="<?php echo $e['title']; ?>"><?php echo $e['title']; ?></option>
-                <?php } ?>
-            </select>
+          <select name="event_id" class="form-control" required>
+    <option value="" disabled selected>Select Event</option>
+    <?php
+    $events = mysqli_query($conn, "SELECT event_id, title FROM create_event ORDER BY title ASC");
+    while ($e = mysqli_fetch_assoc($events)) {
+    ?>
+        <option value="<?php echo $e['event_id']; ?>">
+            <?php echo $e['title']; ?>
+        </option>
+    <?php } ?>
+</select>
+
 
             <label class="mt-3">Rating</label>
             <select name="rating" class="form-control" required>
@@ -138,3 +144,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </body>
 </html>
+
