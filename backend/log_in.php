@@ -15,9 +15,10 @@ if(isset($_POST['submit'])){
 
         $user = mysqli_fetch_assoc($result);
 
-        // Set session
+        // 🔥 Set ALL session variables
+        $_SESSION['user_id'] = $user['id'];          // REQUIRED
         $_SESSION['username'] = $user['first_name'];
-        $_SESSION['email'] = $email;
+        $_SESSION['email'] = $user['email'];
 
         // Redirect to dashboard
         header("Location: ../pages/dashboard.php");
