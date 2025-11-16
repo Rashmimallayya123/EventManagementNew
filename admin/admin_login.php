@@ -45,21 +45,39 @@ session_start();
 
 <div class="login-box">
     <h2>Admin Login</h2>
+<?php
+session_start();
+include("dbconnect.php");
 
-    <?php if(isset($_GET["error"])) { ?>
-        <p style="color: red;">Invalid username or password</p>
-    <?php } ?>
+if (isset($_POST['admin_login'])) {
 
-    <form action="admin_auth.php" method="POST">
-        <input type="text" name="username" placeholder="Admin Username" required>
-        <input type="password" name="password" placeholder="Password" required>
-    <button type="submit" name="admin_login" class="btn btn-primary">Login</button>
+    $username = trim($_POST['username']);
+    $password = trim($_POST['password']);
 
+    $sql = "SELECT * FROM admin_users WHERE username='$username' AND password='$password'";
+    $result = mysqli_query($conn, $sql);
 
-    </form>
-</div>
+    if ($result && mysqli_num_rows($result) > 0) {
+
+        $admin = mysqli_fetch_assoc($result);
+
+        // REQUIRED SESSION VALUES
+        $_SESSION['admin_logged_in'] = true;
+        $_SESSION['admin_id'] = $admin['id'];
+        $_SESSION['admin_username'] = $admin['username'];
+
+        header("Location: admin_dashboard.php");
+        exit();
+
+    } else {
+        header("Location: admin_login.php?error=1");
+        exit();
+    }
+}
+?>
 
 </body>
 </html>
+
 
 
