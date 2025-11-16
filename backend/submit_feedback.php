@@ -2,22 +2,26 @@
 session_start();
 include("dbconnect.php");
 
-// Get user_id from session (must be set during login)
-$user_id = $_SESSION['user_id']; 
+// user_id must exist
+if (!isset($_SESSION['user_id'])) {
+    die("Error: User not logged in. user_id missing.");
+}
 
-// Get event_id from form
+$user_id = $_SESSION['user_id'];
+
+// event_id must be posted from form
+if (!isset($_POST['event_id'])) {
+    die("Error: Event ID not received from form.");
+}
+
 $event_id = $_POST['event_id'];
-
-// Feedback message
 $message = $_POST['message'];
 
-// Prepare correct SQL
+// Insert into DB
 $query = "INSERT INTO feedback (user_id, event_id, message)
           VALUES ('$user_id', '$event_id', '$message')";
-
 mysqli_query($conn, $query);
 
-// Redirect back with success message
 header("Location: ../pages/feedback.php?success=1");
 exit();
 ?>
