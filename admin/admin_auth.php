@@ -7,7 +7,7 @@ if (isset($_POST['admin_login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Correct SQL according to your DB table
+    // Correct SQL (matches your DB)
     $sql = "SELECT * FROM admin_users WHERE username='$username' AND password='$password'";
     $result = mysqli_query($conn, $sql);
 
@@ -22,7 +22,9 @@ if (isset($_POST['admin_login'])) {
         exit();
 
     } else {
-        echo "<script>alert('Invalid admin login'); window.location.href='admin_login.php';</script>";
+        echo "<script>alert('Invalid admin login');
+              window.location.href='admin_login.php';
+              </script>";
     }
 }
 ?>
