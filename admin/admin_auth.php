@@ -1,6 +1,7 @@
 <?php
 session_start();
-include "../backend/dbconnect.php";
+include("dbconnect.php");
+
 
 $username = $_POST['username'];
 $password = $_POST['password'];
@@ -16,3 +17,4 @@ if(mysqli_num_rows($result) == 1){
     header("Location: admin_login.php?error=1");
 }
 ?>
+
