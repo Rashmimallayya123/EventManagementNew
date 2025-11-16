@@ -15,8 +15,8 @@ if(isset($_POST['submit'])){
 
         $user = mysqli_fetch_assoc($result);
 
-        // 🔥 Set ALL session variables
-        $_SESSION['user_id'] = $user['id'];          // REQUIRED
+        // 🔥 IMPORTANT: Store user ID for feedback system
+        $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['first_name'];
         $_SESSION['email'] = $user['email'];
 
