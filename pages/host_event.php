@@ -97,8 +97,10 @@ $user_email = $_SESSION['email'];
 
             <label class="mt-3">Venue</label>
             <input type="text" name="venue" class="form-control" placeholder="Eg: Seminar Hall 1" required>
+<button type="submit" name="submit" class="btn btn-yellow w-100 mt-4">
+    Submit Request
+</button>
 
-            <button class="btn btn-yellow w-100 mt-4">Submit Request</button>
         </form>
 
     </div>
@@ -146,3 +148,4 @@ document.addEventListener("DOMContentLoaded", () => {
 <?php } ?>
 </body>
 </html>
+
