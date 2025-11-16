@@ -53,11 +53,13 @@ session_start();
     <form action="admin_auth.php" method="POST">
         <input type="text" name="username" placeholder="Admin Username" required>
         <input type="password" name="password" placeholder="Password" required>
-     <button type="submit" name="admin_login">Login</button>
+    <button type="submit" name="admin_login" class="btn btn-primary">Login</button>
+
 
     </form>
 </div>
 
 </body>
 </html>
+
 
