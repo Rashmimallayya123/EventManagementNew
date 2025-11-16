@@ -16,7 +16,6 @@ $venue = $_POST['venue'];
 $status = "pending";
 $publish_event = 0;
 
-// Correct SQL based on your table structure
 $sql = "INSERT INTO create_event (title, description, event_date, event_time, venue, publish_event, created_by)
         VALUES ('$title', '$description', '$date', '', '$venue', '$publish_event', '$user_id')";
 
